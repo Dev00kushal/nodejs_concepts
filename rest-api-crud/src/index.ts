@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
 import http from "http";
+import mongoose from "mongoose";
 
 const app = express();
 
@@ -24,3 +25,8 @@ server.listen(PORT, () => {
     console.log(`http://localhost:${PORT}/`);
 });
 
+const MONGO_URL ="mongodb+srv://devkushal:qtbM14iE5iEyTGRw@cluster0.1bbbmii.mongodb.net/?retryWrites=true&w=majority"
+
+mongoose.Promise = Promise;
+mongoose.connect(MONGO_URL);
+mongoose.connection.on('error',(error:Error)=>console.log(error));

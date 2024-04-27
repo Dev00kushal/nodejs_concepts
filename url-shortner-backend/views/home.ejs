@@ -6,6 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> Hey from server<h1>
+    <h1>Hey from server</h1>
+
+    <!-- Form for creating short URLs -->
+    <form action="/shorten" method="POST">
+        <label for="url">Enter URL:</label>
+        <input type="text" id="url" name="url">
+        <button type="submit">Shorten URL</button>
+    </form>
+
+    <!-- Display analytics for a short URL -->
+    <h2>Analytics:</h2>
+    <p>Total Clicks: <%= analytics.totalClicks %></p>
+    <ul>
+        <% analytics.analytics.forEach((visit, index) => { %>
+            <li>Visit <%= index + 1 %>: <%= visit.timestamp %></li>
+        <% }); %>
+    </ul>
 </body>
 </html>
